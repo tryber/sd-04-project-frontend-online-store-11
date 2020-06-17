@@ -21,7 +21,6 @@ function App() {
       </header>
     </div>
   );
-  
   // Jorge
 }
 
