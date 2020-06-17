@@ -4,13 +4,11 @@ import { getCategories } from './services/api';
 class TestMathieu extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      Categoriesies: '',
-    };
+    this.state = { categorias: '' };
   }
 
   componentDidMount() {
-    getCategories().then(Categoriesies => this.setState({ Categoriesies }));
+    getCategories().then((categorias) => this.setState({ categorias }));
   }
 
   render() {
