@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import * as api from './services/api';
 import { getCategories } from './services/api';
 
 class TestMathieu extends Component {
@@ -11,16 +10,12 @@ class TestMathieu extends Component {
   }
 
   componentDidMount() {
-    // 
-    getCategories().then((Categoriesies) => this.setState({ Categoriesies }));
+    getCategories().then(Categoriesies => this.setState({ Categoriesies }));
   }
 
   render() {
-    return (
-    <p>Test Mathieu 
-      
-    </p>
-    )}
+    return <p>Test Mathieu</p>;
+  }
 }
 
 export default TestMathieu;
