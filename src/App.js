@@ -22,6 +22,6 @@ function App() {
     </div>
   );
 }
-//cezene
+// cezene
 
 export default App;
