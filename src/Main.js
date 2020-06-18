@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import SearchBar from './Searchbar';
+import Category from './Category';
 
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      searchText: '',
-    }
+    this.state = { searchText: '' };
   }
 
   render() {
     return (
-      <SearchBar searchText={this.state.searchText} />
-    )
+      <div>
+        <SearchBar searchText={this.state.searchText} />
+        <Category />
+      </div>
+    );
   }
 }
 
