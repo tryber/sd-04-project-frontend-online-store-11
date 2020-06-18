@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import SearchBar from './Searchbar';
-import Category from './Category';
+import SearchBar from './SearchBar';
 
 class Main extends Component {
   constructor(props) {
@@ -18,7 +17,7 @@ class Main extends Component {
     return (
       <div>
         <SearchBar searchText={this.state.searchText} textChange={this.textChange} />
-        <Category />
+        <p data-testid="home-initial-message">Digite algum termo de pesquisa ou escolha uma categoria.</p>
       </div>
     );
   }

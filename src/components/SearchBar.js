@@ -5,13 +5,10 @@ class SearchBar extends Component {
     const { searchText, textChange } = this.props;
     return (
       <form>
-        <label htmlFor="searchText">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </label>
-        <input
+          <input
           type="text" name="searchText"
-          value={searchText} onChange={textChange}
-        />
+          value={searchText} onChange={textChange} 
+          />
       </form>
     );
   }
