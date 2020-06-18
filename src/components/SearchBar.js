@@ -6,8 +6,8 @@ class SearchBar extends Component {
     return (
       <form>
         <input
-        type="text" name="searchText"
-        value={searchText} onChange={textChange}
+          type="text" name="searchText"
+          value={searchText} onChange={textChange}
         />
       </form>
     );
