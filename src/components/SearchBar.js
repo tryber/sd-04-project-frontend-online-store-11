@@ -5,10 +5,10 @@ class SearchBar extends Component {
     const { searchText, textChange } = this.props;
     return (
       <form>
-          <input
-          type="text" name="searchText"
-          value={searchText} onChange={textChange} 
-          />
+        <input
+        type="text" name="searchText"
+        value={searchText} onChange={textChange}
+        />
       </form>
     );
   }

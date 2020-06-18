@@ -17,7 +17,9 @@ class Main extends Component {
     return (
       <div>
         <SearchBar searchText={this.state.searchText} textChange={this.textChange} />
-        <p data-testid="home-initial-message">Digite algum termo de pesquisa ou escolha uma categoria.</p>
+        <p data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </p>
       </div>
     );
   }
