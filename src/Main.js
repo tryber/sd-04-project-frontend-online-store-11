@@ -6,9 +6,10 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = { searchText: '' };
+    this.textChange = this.textChange.bind(this);
   }
 
-  textChange = (event) => {
+  textChange(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value })
   }
