@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 
-class Main extends Component {
+class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = { searchText: '' };
@@ -25,4 +25,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default MainPage;
