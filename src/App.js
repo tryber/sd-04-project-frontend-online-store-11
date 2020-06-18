@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import TestMathieu from './TestMathieu';
+import MainPage from './components/MainPage';
 
 function App() {
   return (
     <div className="App">
-      <TestMathieu />
+      <MainPage />
     </div>
   );
 }
