@@ -8,10 +8,15 @@ class Main extends Component {
     this.state = { searchText: '' };
   }
 
+  textChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value })
+  }
+
   render() {
     return (
       <div>
-        <SearchBar searchText={this.state.searchText} />
+        <SearchBar searchText={this.state.searchText} textChange={this.textChange} />
         <Category />
       </div>
     );
