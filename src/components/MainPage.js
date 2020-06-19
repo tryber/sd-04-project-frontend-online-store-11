@@ -21,7 +21,7 @@ class MainPage extends Component {
     this.setState({ [name]: value });
   }
 
-  handleClick = () => {
+  handleClick() {
     getProductsFromCategoryAndQuery('', this.state.searchText).then(products =>
       this.setState({ products }),
     );

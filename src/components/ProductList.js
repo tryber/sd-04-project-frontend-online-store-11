@@ -5,16 +5,16 @@ class ProductList extends React.Component {
     const { products } = this.props;
     if (products === '') return 'Carregando...';
     return (
-      <>
+      <div>
         <h1>ProductList</h1>
-        {products.results.map((product) => (
+        {products.results.map(product => (
           <div data-testid="product" key={product.id}>
             <p>{product.id}</p>
             <p>{product.title}</p>
             <img src={product.thumbnail} alt={product.title} />
           </div>
         ))}
-      </>
+      </div>
     );
   }
 }

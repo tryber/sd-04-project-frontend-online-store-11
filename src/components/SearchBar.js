@@ -6,7 +6,7 @@ class SearchBar extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
 
-  handleSearch = event => {
+  handleSearch(event) {
     this.props.onClickSearch();
     event.preventDefault();
   };
