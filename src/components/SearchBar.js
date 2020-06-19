@@ -9,7 +9,7 @@ class SearchBar extends Component {
   handleSearch(event) {
     this.props.onClickSearch();
     event.preventDefault();
-  };
+  }
 
   render() {
     const { searchText, textChange } = this.props;

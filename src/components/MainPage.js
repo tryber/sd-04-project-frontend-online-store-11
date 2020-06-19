@@ -16,22 +16,20 @@ class MainPage extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidMount() {
+    getCategories().then((categories) => this.setState({ categories }));
+    getProductsFromCategoryAndQuery().then((products) =>
+      this.setState({ products }),
+    );
+  }
+
   textChange(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   }
 
   handleClick() {
-    getProductsFromCategoryAndQuery('', this.state.searchText).then(products =>
-      this.setState({ products }),
-    );
-
-    console.log(this.state.products);
-  };
-
-  componentDidMount() {
-    getCategories().then(categories => this.setState({ categories }));
-    getProductsFromCategoryAndQuery().then(products =>
+    getProductsFromCategoryAndQuery('', this.state.searchText).then((products) =>
       this.setState({ products }),
     );
   }
