@@ -9,7 +9,7 @@ class CartButton extends Component {
       <BrowserRouter>
         <div>
           <Link data-testid="shopping-cart-button" to="/shopping-cart">
-              <FaShoppingCart size={42} />
+            <FaShoppingCart size={42} />
           </Link>
         </div>
         <Switch>
