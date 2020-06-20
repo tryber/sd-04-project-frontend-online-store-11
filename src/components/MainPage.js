@@ -21,15 +21,14 @@ class MainPage extends Component {
 
   componentDidMount() {
     api.getCategories().then((categories) => this.setState({ categories }));
-    // api.getProductsFromCategoryAndQuery(this.state.selectedCategory, this.state.searchText).then(products =>
+    // api.getProductsFromCategoryAndQuery(this.state.selectedCategory, this.state.searchText).
+    // then(products =>
     //   this.setState({ products }),
     // );
   }
 
   onSelectedOptionChange(event) {
-    this.setState({
-      selectedCategory: event.target.value,
-    });
+    this.setState({ selectedCategory: event.target.value });
   }
 
   textChange(event) {
