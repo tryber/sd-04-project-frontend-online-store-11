@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
-import ProductSpecs from './ProductSpecs';
 
 class ProductDetail extends Component {
   render() {
-    const { especificacoes } = this.props;
-    const { title, price, imageProduct } = this.props;
+    const { title, price, imageProduct, especificacao } = this.props;
     return (
       <section>
         <div>
+          <h1 data-testid="product-detail-name">{title} - R${price}</h1>
           <img src={imageProduct} alt={title} />
-        </div>
-          <h1>{title} - R${price}</h1>
+        </div>   
         <div>
           <h3>Especificações Técnicas</h3>
-          {especificacoes.map((specs) => <ProductSpecs key={specs.title} especificacao={specs} />)}
+          <p>{especificacao}</p>
         </div>
       </section>
-
     );
   }
 }
