@@ -8,7 +8,7 @@ class ProductDetail extends Component {
         <div>
           <h1 data-testid="product-detail-name">{title} - R${price}</h1>
           <img src={imageProduct} alt={title} />
-        </div>   
+        </div>
         <div>
           <h3>Especificações Técnicas</h3>
           <p>{especificacao}</p>
