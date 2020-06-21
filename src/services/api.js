@@ -3,7 +3,6 @@ export async function getCategories() {
     // 'https://cors-anywhere.herokuapp.com/https://api.mercadolibre.com/sites/MLB/categories';
     'https://api.mercadolibre.com/sites/MLB/categories';
   const categories = await fetch(url).then((res) => res.json());
-  console.log(categories);
   return categories;
 }
 
