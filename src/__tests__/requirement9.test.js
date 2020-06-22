@@ -14,7 +14,7 @@ api.getProductsFromCategoryAndQuery.mockImplementation(
 );
 
 describe('Adicionar um produto ao carrinho a partir de sua tela de exibição detalhada', () => {
-  it.skip('should add product to shopping cart from product details page', async () => {
+  it('should add product to shopping cart from product details page', async () => {
     render(<App />);
     await waitFor(() => expect(api.getCategories).toHaveBeenCalled());
     fireEvent.click(screen.getAllByTestId('category')[0]);

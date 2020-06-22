@@ -19,8 +19,9 @@ class Categories extends Component {
         <div>
           {categories.map((category) => (
             <div key={category.name}>
-              <label data-testid="category" htmlFor={category.name}>
+              <label htmlFor={category.name}>
                 <input
+                  data-testid="category"
                   type="radio"
                   value={category.id}
                   checked={selectedCategory === category.id}

@@ -27,17 +27,17 @@ class MainPage extends Component {
   }
 
   componentDidMount() {
-    // Promise.all([getProductsFromCategoryAndQuery(this.state.selectedCategory, this.state.searchText), getCategories()])
-    //   .then(([data1, data2]) => {
-    //     this.setState({ products: data1,
-    //       Categories: data2 });
-    //   });
+    const { selectedCategory, searchText } = this.state;
+    api.getCategories().then(categories => this.setState({ categories }));
+  }
 
-    getCategories().then(categories => this.setState({ categories }));
-    getProductsFromCategoryAndQuery(
-      this.state.selectedCategory,
-      this.state.searchText,
-    ).then(products => this.setState({ products }));
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const { selectedCategory, searchText } = this.state;
+    if (prevState.selectedCategory !== this.state.selectedCategory) {
+      api
+        .getProductsFromCategoryAndQuery(selectedCategory, searchText)
+        .then(products => this.setState({ products }));
+    }
   }
 
   onSelectedOptionChange(event) {
