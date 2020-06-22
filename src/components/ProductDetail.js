@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RateProduct from './RateProduct';
 // lembrar de data-testid="product-detail-link" no <Link> de ProductList
 class ProductDetail extends Component {
   render() {
@@ -15,6 +16,7 @@ class ProductDetail extends Component {
           <p>{attributes[1].value_name}</p>
           <p>{attributes[2].value_name}</p>
         </div>
+        <RateProduct />
       </section>
     );
   }

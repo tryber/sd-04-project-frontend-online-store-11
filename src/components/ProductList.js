@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class ProductList extends React.Component {
   render() {
@@ -12,6 +13,9 @@ class ProductList extends React.Component {
             <p>{product.id}</p>
             <p>{product.title}</p>
             <img src={product.thumbnail} alt={product.title} />
+            <Link to={{ pathname: `./${product.id}`, state: product }}>
+              Detalhe
+            </Link>
           </div>
         ))}
       </div>
