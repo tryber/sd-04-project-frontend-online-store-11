@@ -14,7 +14,7 @@ api.getProductsFromCategoryAndQuery.mockImplementation(
 );
 
 describe('Finalizar compra, vendo um resumo dela, preenchendo os meus dados e escolhendo a forma de pagamento', () => {
-  it.skip('should buy products from shopping cart list', async () => {
+  it('should buy products from shopping cart list', async () => {
     const fullName = 'my full name';
     const email ='my@email.com';
     const cpf = '12345678900';
