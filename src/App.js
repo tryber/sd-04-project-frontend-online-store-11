@@ -10,8 +10,8 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Header />
         <Switch>
-          <Header />
           <Route path="/" component={MainPage} />
           <Route path="/ShoppingCart" component={ShoppingCart} />
           <Route path="/:id" component={ProductDetail} />
