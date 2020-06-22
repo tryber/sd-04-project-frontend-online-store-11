@@ -23,5 +23,5 @@ function App() {
     </BrowserRouter>
   );
 }
-//coment
+// coment
 export default App;
