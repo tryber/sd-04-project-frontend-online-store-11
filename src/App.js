@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Router, Switch, Route } from 'react-router-dom';
 import React from 'react';
 import './App.css';
 import MainPage from './components/MainPage';
@@ -9,7 +9,7 @@ import ShoppingCart from './components/ShoppingCart';
 function App() {
   return (
     <BrowserRouter>
-    <Router>
+      <Router>
       <div className="App">
         <Header />
         <Route path="/" component={MainPage} />
