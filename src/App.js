@@ -15,9 +15,9 @@ function App() {
           <Route path="/" component={MainPage} />
           <Route path="/ShoppingCart" component={ShoppingCart} />
           <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route path="/:id" component={ProductDetail} />
-        </Switch>
+            <Route exact path="/" component={MainPage} />
+            <Route path="/:id" component={ProductDetail} />
+          </Switch>
         </div>
       </Router>
     </BrowserRouter>
