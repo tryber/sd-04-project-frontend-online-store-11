@@ -11,14 +11,14 @@ function App() {
     <BrowserRouter>
       <Router>
         <div className="App">
-        <Header />
-        <Route path="/" component={MainPage} />
-        <Route path="/ShoppingCart" component={ShoppingCart} />
-        <Switch>
+          <Header />
+          <Route path="/" component={MainPage} />
+          <Route path="/ShoppingCart" component={ShoppingCart} />
+          <Switch>
           <Route exact path="/" component={MainPage} />
           <Route path="/:id" component={ProductDetail} />
         </Switch>
-      </div>
+        </div>
       </Router>
     </BrowserRouter>
   );
