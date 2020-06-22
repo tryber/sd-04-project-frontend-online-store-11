@@ -1,4 +1,4 @@
-import { BrowserRouter, Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import React from 'react';
 import './App.css';
 import MainPage from './components/MainPage';
@@ -8,20 +8,17 @@ import ShoppingCart from './components/ShoppingCart';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Router>
-        <div className="App">
-          <Header />
-          <Route path="/" component={MainPage} />
-          <Route path="/ShoppingCart" component={ShoppingCart} />
-          <Switch>
-            <Route exact path="/" component={MainPage} />
-            <Route path="/:id" component={ProductDetail} />
-          </Switch>
-        </div>
-      </Router>
-    </BrowserRouter>
+    <Router>
+      <div className="App">
+      <Switch>
+        <Header />
+        <Route path="/" component={MainPage} />
+        <Route path="/ShoppingCart" component={ShoppingCart} />
+        <Route path="/:id" component={ProductDetail} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
-// coment
+
 export default App;
