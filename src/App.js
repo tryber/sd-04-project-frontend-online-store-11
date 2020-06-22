@@ -10,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <Router>
-      <div className="App">
+        <div className="App">
         <Header />
         <Route path="/" component={MainPage} />
         <Route path="/ShoppingCart" component={ShoppingCart} />
@@ -19,7 +19,7 @@ function App() {
           <Route path="/:id" component={ProductDetail} />
         </Switch>
       </div>
-    </Router>
+      </Router>
     </BrowserRouter>
   );
 }
