@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -29,6 +30,9 @@ class ProductList extends React.Component {
             >
               Add this item to Cart
             </button>
+            <Link to={{ pathname: `./${product.id}`, state: product }}>
+              Detalhe
+            </Link>
           </div>
         ))}
       </div>
