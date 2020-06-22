@@ -69,11 +69,11 @@ class MainPage extends Component {
       if (cartProduct.id === product.id) {
         flagExist = true;
         const cartProducts = [...this.state.cartProducts];
-        const cartProduct = {
+        const cartProduct1 = {
           ...cartProducts[index],
           quantity: cartProducts[index].quantity + 1,
         };
-        cartProducts[index] = cartProduct;
+        cartProducts[index] = cartProduct1;
         this.setState({ cartProducts });
       }
       return flagExist;
