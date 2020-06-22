@@ -10,11 +10,11 @@ class RateProduct extends Component {
       textEmail: '',
       rating: 0,
       textArea: '',
-    }
+    };
   }
 
   render() {
-    const { textEmail, textArea, rating} = this.state;
+    const { textEmail, textArea, rating } = this.state;
     return (
       <section className="rate-section">
         <h3 className="rate-title">Avaliações</h3>
