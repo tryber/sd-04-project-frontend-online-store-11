@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import ProductList from './ProductList';
-import { getCategories } from '../services/api';
+import Categories from './Categories';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import * as api from '../services/api';
 
 class MainPage extends Component {
   constructor(props) {
@@ -11,16 +12,23 @@ class MainPage extends Component {
       searchText: '',
       products: '',
       categories: '',
+      selectedCategory: '',
     };
     this.textChange = this.textChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.onSelectedOptionChange = this.onSelectedOptionChange.bind(this);
   }
 
   componentDidMount() {
-    getCategories().then((categories) => this.setState({ categories }));
-    getProductsFromCategoryAndQuery().then((products) =>
-      this.setState({ products }),
-    );
+    api.getCategories().then((categories) => this.setState({ categories }));
+    // api.getProductsFromCategoryAndQuery(this.state.selectedCategory, this.state.searchText).
+    // then(products =>
+    //   this.setState({ products }),
+    // );
+  }
+
+  onSelectedOptionChange(event) {
+    this.setState({ selectedCategory: event.target.value });
   }
 
   textChange(event) {
@@ -35,17 +43,24 @@ class MainPage extends Component {
   }
 
   render() {
+    const { searchText, selectedCategory, categories, products } = this.state;
     return (
       <div>
         <SearchBar
-          searchText={this.state.searchText}
+          searchText={searchText}
           textChange={this.textChange}
           onClickSearch={this.handleClick}
         />
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-        <ProductList products={this.state.products} />
+        <Categories
+          selectedCategory={selectedCategory}
+          categories={categories}
+          onChangeOption={this.onSelectedOptionChange}
+        />
+        <ProductList products={products} />
+
       </div>
     );
   }

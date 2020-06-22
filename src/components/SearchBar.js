@@ -22,7 +22,7 @@ class SearchBar extends Component {
           value={searchText}
           onChange={textChange}
         />
-        <button onClick={this.handleSearch} data-testid="query-button">
+        <button type="button" onClick={this.handleSearch} data-testid="query-button">
           buscar
         </button>
       </form>
