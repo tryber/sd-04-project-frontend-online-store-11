@@ -20,19 +20,19 @@ class RateProduct extends Component {
         <h3 className="rate-title">Avaliações</h3>
         <form className="rate-form">
           <div className="frst-line">
-            <input 
-              className="rate-email" name="email" 
-              type="email" placeholder="Email" value={textEmail} 
+            <input
+              className="rate-email" name="email" data-testid="product-detail-evaluation"
+              type="email" placeholder="Email" value={textEmail}
             />
-            <ReactStars 
-              className="react-stars" count={5} size={28} 
-              color={'#ffd700'} value={rating} 
+            <ReactStars
+              className="react-stars" count={5} size={28}
+              color={'#ffd700'} value={rating}
             />
           </div>
           <div className="sec-line">
-            <textarea 
-              className="rate-area" type="text" 
-              placeholder="Mensagem(opcional)" value={textArea} 
+            <textarea
+              className="rate-area" type="text"
+              placeholder="Mensagem(opcional)" value={textArea}
             />
             <button className="rate-button">Avaliar</button>
           </div>
