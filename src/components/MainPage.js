@@ -3,8 +3,6 @@ import SearchBar from './SearchBar';
 import ProductList from './ProductList';
 import Categories from './Categories';
 import ShoppingCart from './ShoppingCart';
-import { getProductsFromCategoryAndQuery } from '../services/api';
-import { getCategories } from '../services/api';
 import * as api from '../services/api';
 
 class MainPage extends Component {
@@ -27,16 +25,15 @@ class MainPage extends Component {
   }
 
   componentDidMount() {
-    const { selectedCategory, searchText } = this.state;
-    api.getCategories().then(categories => this.setState({ categories }));
+    api.getCategories().then((categories) => this.setState({ categories }));
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps, prevState) {
     const { selectedCategory, searchText } = this.state;
     if (prevState.selectedCategory !== this.state.selectedCategory) {
       api
         .getProductsFromCategoryAndQuery(selectedCategory, searchText)
-        .then(products => this.setState({ products }));
+        .then((products) => this.setState({ products }));
     }
   }
 
@@ -63,7 +60,7 @@ class MainPage extends Component {
         this.state.selectedCategory,
         this.state.searchText,
       )
-      .then(products => this.setState({ products }));
+      .then((products) => this.setState({ products }));
   }
 
   addProductToCart(product) {
@@ -71,14 +68,15 @@ class MainPage extends Component {
     this.state.cartProducts.map((cartProduct, index) => {
       if (cartProduct.id === product.id) {
         flagExist = true;
-        let cartProducts = [...this.state.cartProducts];
-        let cartProduct = {
+        const cartProducts = [...this.state.cartProducts];
+        const cartProduct = {
           ...cartProducts[index],
           quantity: cartProducts[index].quantity + 1,
         };
         cartProducts[index] = cartProduct;
         this.setState({ cartProducts });
       }
+      return flagExist;
     });
     if (flagExist === false) {
       const newProduct = {
@@ -86,7 +84,7 @@ class MainPage extends Component {
         quantity: 1,
         selectedProduct: product,
       };
-      this.setState(state => {
+      this.setState((state) => {
         const cartProducts = [...state.cartProducts, newProduct];
         return { cartProducts };
       });
