@@ -29,7 +29,6 @@ class MainPage extends Component {
 
   onSelectedOptionChange(event) {
     this.setState({ selectedCategory: event.target.value });
-
   }
 
   textChange(event) {
