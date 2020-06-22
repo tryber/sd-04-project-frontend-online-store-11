@@ -34,10 +34,10 @@ class MainPage extends Component {
     //   });
 
     getCategories().then(categories => this.setState({ categories }));
-    // getProductsFromCategoryAndQuery(
-    //   this.state.selectedCategory,
-    //   this.state.searchText,
-    // ).then(products => this.setState({ products }));
+    getProductsFromCategoryAndQuery(
+      this.state.selectedCategory,
+      this.state.searchText,
+    ).then(products => this.setState({ products }));
   }
 
   onSelectedOptionChange(event) {
