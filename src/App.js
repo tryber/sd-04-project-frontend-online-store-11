@@ -12,9 +12,9 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
-          <Route path="/" component={MainPage} />
           <Route path="/ShoppingCart" component={ShoppingCart} />
           <Route path="/:id" component={ProductDetail} />
+          <Route path="/" component={MainPage} />
         </Switch>
       </div>
     </Router>

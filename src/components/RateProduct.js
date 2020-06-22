@@ -1,17 +1,41 @@
 import { Component } from 'react';
 import React from 'react';
-import ReactStars from 'react-stars'
+import ReactStars from 'react-stars';
+import './RateProduct.css';
 
 class RateProduct extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      textEmail: '',
+      rating: 0,
+      textArea: '',
+    }
+  }
+
   render() {
+    const { textEmail, textArea, rating} = this.state;
     return (
-      <section>
-        <h3>Avaliações</h3>
-        <form>
-          <input className="rate-email" name="email" type="email" placeholder="Email" />
-          <ReactStars className="react-stars" count={5} size={28} color={'#ffd700'} />
-          <textarea className="rate-area" type="text" placeholder="Mensagem(opcional)" />
-          <button>Avaliar</button>
+      <section className="rate-section">
+        <h3 className="rate-title">Avaliações</h3>
+        <form className="rate-form">
+          <div className="frst-line">
+            <input 
+              className="rate-email" name="email" 
+              type="email" placeholder="Email" value={textEmail} 
+            />
+            <ReactStars 
+              className="react-stars" count={5} size={28} 
+              color={'#ffd700'} value={rating} 
+            />
+          </div>
+          <div className="sec-line">
+            <textarea 
+              className="rate-area" type="text" 
+              placeholder="Mensagem(opcional)" value={textArea} 
+            />
+            <button className="rate-button">Avaliar</button>
+          </div>
         </form>
       </section>
     );
