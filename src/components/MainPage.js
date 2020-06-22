@@ -29,6 +29,7 @@ class MainPage extends Component {
 
   onSelectedOptionChange(event) {
     this.setState({ selectedCategory: event.target.value });
+
   }
 
   textChange(event) {
@@ -60,6 +61,7 @@ class MainPage extends Component {
           onChangeOption={this.onSelectedOptionChange}
         />
         <ProductList products={products} />
+
       </div>
     );
   }
