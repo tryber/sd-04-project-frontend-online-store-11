@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import ProductList from './ProductList';
 import Categories from './Categories';
-import { getProductsFromCategoryAndQuery } from '../services/api';
+import ShoppingCart from './ShoppingCart';
 import * as api from '../services/api';
 
 class MainPage extends Component {
@@ -13,22 +13,40 @@ class MainPage extends Component {
       products: '',
       categories: '',
       selectedCategory: '',
+      cartProducts: [],
+      count: 0,
     };
     this.textChange = this.textChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.onSelectedOptionChange = this.onSelectedOptionChange.bind(this);
+    this.addProductToCart = this.addProductToCart.bind(this);
+    this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
   }
 
   componentDidMount() {
     api.getCategories().then((categories) => this.setState({ categories }));
-    // api.getProductsFromCategoryAndQuery(this.state.selectedCategory, this.state.searchText).
-    // then(products =>
-    //   this.setState({ products }),
-    // );
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { selectedCategory, searchText } = this.state;
+    if (prevState.selectedCategory !== this.state.selectedCategory) {
+      api
+        .getProductsFromCategoryAndQuery(selectedCategory, searchText)
+        .then((products) => this.setState({ products }));
+    }
   }
 
   onSelectedOptionChange(event) {
     this.setState({ selectedCategory: event.target.value });
+  }
+
+  decrement() {
+    this.setState({ count: this.state.count - 1 });
+  }
+
+  increment() {
+    this.setState({ count: this.state.count + 1 });
   }
 
   textChange(event) {
@@ -37,9 +55,40 @@ class MainPage extends Component {
   }
 
   handleClick() {
-    getProductsFromCategoryAndQuery('', this.state.searchText).then((products) =>
-      this.setState({ products }),
-    );
+    api
+      .getProductsFromCategoryAndQuery(
+        this.state.selectedCategory,
+        this.state.searchText,
+      )
+      .then((products) => this.setState({ products }));
+  }
+
+  addProductToCart(product) {
+    let flagExist = false;
+    this.state.cartProducts.map((cartProduct, index) => {
+      if (cartProduct.id === product.id) {
+        flagExist = true;
+        const cartProducts = [...this.state.cartProducts];
+        const cartProduct1 = {
+          ...cartProducts[index],
+          quantity: cartProducts[index].quantity + 1,
+        };
+        cartProducts[index] = cartProduct1;
+        this.setState({ cartProducts });
+      }
+      return flagExist;
+    });
+    if (flagExist === false) {
+      const newProduct = {
+        id: product.id,
+        quantity: 1,
+        selectedProduct: product,
+      };
+      this.setState((state) => {
+        const cartProducts = [...state.cartProducts, newProduct];
+        return { cartProducts };
+      });
+    }
   }
 
   render() {
@@ -54,13 +103,20 @@ class MainPage extends Component {
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
+        <ShoppingCart
+          cartProducts={this.state.cartProducts}
+          count={this.state.count}
+        />
+        <ProductList
+          products={products}
+          onClickAdd={this.addProductToCart}
+          onclickIncrement={this.increment}
+        />
         <Categories
           selectedCategory={selectedCategory}
           categories={categories}
           onChangeOption={this.onSelectedOptionChange}
         />
-        <ProductList products={products} />
-
       </div>
     );
   }

@@ -18,12 +18,13 @@ class Categories extends Component {
         <h1>Categories</h1>
         <div>
           {categories.map((category) => (
-            <div>
-              <label data-testid="category" htmlFor={category.name}>
+            <div key={category.name}>
+              <label htmlFor={category.name}>
                 <input
+                  data-testid="category"
                   type="radio"
-                  value={category.name}
-                  checked={selectedCategory === category.name}
+                  value={category.id}
+                  checked={selectedCategory === category.id}
                   onChange={this.onValueChange}
                 />
                 {category.name}

@@ -14,7 +14,7 @@ api.getProductsFromCategoryAndQuery.mockImplementation(
 );
 
 describe('A quantidade de produtos adicionados ao carrinho deve ser limitada pela quantidade disponível em estoque', () => {
-  it.skip('should increase quantity in shopping cart list until the availability quantity', async () => {
+  it('should increase quantity in shopping cart list until the availability quantity', async () => {
     render(<App />);
     await waitFor(() => expect(api.getCategories).toHaveBeenCalled());
     fireEvent.click(screen.getAllByTestId('category')[0]);

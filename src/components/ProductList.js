@@ -1,6 +1,16 @@
 import React from 'react';
 
 class ProductList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.clickToAdd = this.clickToAdd.bind(this);
+  }
+
+  clickToAdd(product) {
+    this.props.onClickAdd(product);
+    this.props.onclickIncrement();
+  }
+
   render() {
     const { products } = this.props;
     if (products === '') return 'Carregando...';
@@ -12,6 +22,13 @@ class ProductList extends React.Component {
             <p>{product.id}</p>
             <p>{product.title}</p>
             <img src={product.thumbnail} alt={product.title} />
+            <button
+              type="button"
+              data-testid="product-add-to-cart"
+              onClick={() => this.clickToAdd(product)}
+            >
+              Add this item to Cart
+            </button>
           </div>
         ))}
       </div>
