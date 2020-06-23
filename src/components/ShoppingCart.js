@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class ShoppingCart extends Component {
   constructor(props) {
@@ -46,7 +46,8 @@ class ShoppingCart extends Component {
             <p>{product.selectedProduct.title}</p>
             <img src={product.selectedProduct.thumbnail} alt={product.title} />
             <button
-              type="button" data-testid="product-increase-quantity"
+              type="button"
+              data-testid="product-increase-quantity"
               onClick={() => this.addProductToCart(product)}
             >
               +
@@ -55,12 +56,13 @@ class ShoppingCart extends Component {
               {product.quantity}
             </p>
             <button
-              type="button" data-testid="product-decrease-quantity"
+              type="button"
+              data-testid="product-decrease-quantity"
               onClick={() => this.removeProductToCart(product)}
             >
               -
             </button>
-        </div>
+          </div>
         ))}
       </div>
     );
