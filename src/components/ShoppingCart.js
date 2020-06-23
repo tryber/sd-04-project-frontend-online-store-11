@@ -45,7 +45,6 @@ class ShoppingCart extends Component {
             <p>{product.id}</p>
             <p>{product.selectedProduct.title}</p>
             <img src={product.selectedProduct.thumbnail} alt={product.title} />
-            <div>
               <button
                 type="button" data-testid="product-increase-quantity"
                 onClick={() => this.addProductToCart(product)}
@@ -57,10 +56,10 @@ class ShoppingCart extends Component {
               </p>
               <button
                 type="button" data-testid="product-decrease-quantity"
-                onClick={() => this.removeProductToCart(product)}>
+                onClick={() => this.removeProductToCart(product)}
+              >
                 -
               </button>
-            </div>
           </div>
         ))}
       </div>
