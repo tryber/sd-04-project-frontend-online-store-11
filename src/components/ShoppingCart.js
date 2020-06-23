@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class ShoppingCart extends Component {
   constructor(props) {
@@ -21,18 +21,19 @@ class ShoppingCart extends Component {
     this.props.onclickDecrement();
   }
 
-  render() {
-    if (this.props.count === 0) {
-      return (
-        <div>
-          <h1>Carrinho de compras</h1>
-          <p data-testid="shopping-cart-empty-message">
-            Seu carrinho está vazio
-            {this.props.count}
-          </p>
-        </div>
-      );
-    }
+  renderemptyCar() {
+    return (
+      <div>
+        <h1>Carrinho de compras</h1>
+        <p data-testid="shopping-cart-empty-message">
+          Seu carrinho está vazio
+          {this.props.count}
+        </p>
+      </div>
+    );
+  }
+
+  renderCart() {
     const { cartProducts } = this.props;
     return (
       <div>
@@ -52,7 +53,6 @@ class ShoppingCart extends Component {
               >
                 +
               </button>
-              <p>{product.quantity}</p>
               <p data-testid="shopping-cart-product-quantity">
                 {product.quantity}
               </p>
@@ -68,6 +68,13 @@ class ShoppingCart extends Component {
         ))}
       </div>
     );
+  }
+
+  render() {
+    if (this.props.count === 0) {
+      return this.renderemptyCar();
+    }
+    return this.renderCart();
   }
 }
 
