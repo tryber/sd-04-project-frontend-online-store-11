@@ -4,8 +4,7 @@ class ProductDetail extends Component {
   render() {
 
     if (typeof this.props.location.propsToDetail === 'undefined') {
-console.log('undifend')
-      return <p>Details</p>;
+      return <p>No Details</p>;
 
     }
 

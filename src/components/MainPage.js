@@ -114,7 +114,15 @@ class MainPage extends Component {
             Digite algum termo de pesquisa ou escolha uma categoria.
           </p>
           <Switch>
-            <Route path="/ShoppingCart" component={ShoppingCart} />
+            <Route
+              path="/ShoppingCart"
+              render={props => (
+                <ShoppingCart
+                  cartProducts={this.state.cartProducts}
+                  count={this.state.count}
+                />
+              )}
+            />
             <Route path="/:id" exact component={ProductDetail} />
             <Route
               exact
