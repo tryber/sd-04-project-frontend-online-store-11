@@ -37,7 +37,7 @@ class MainPage extends Component {
     if (prevState.selectedCategory !== this.state.selectedCategory) {
       api
         .getProductsFromCategoryAndQuery(selectedCategory, searchText)
-        .then(products => this.setState({ products }));
+        .then(products => (this.setState({ products })));
     }
   }
 
@@ -46,11 +46,11 @@ class MainPage extends Component {
   }
 
   decrement() {
-    this.setState((state)=>({ count: state.count - 1 }));
+    this.setState((state) => ({ count: state.count - 1 }));
   }
 
   increment() {
-    this.setState((state)=>({ count: state.count + 1 }));
+    this.setState((state) => ({ count: state.count + 1 }));
   }
 
   textChange(event) {
