@@ -14,7 +14,7 @@ class ProductList extends React.Component {
 
   render() {
     const { products } = this.props;
-    if (products === '') return 'Carregando...';
+    if (products === '') return 'Carregando Produto liste...';
     return (
       <div>
         <h1>ProductList</h1>
@@ -30,7 +30,13 @@ class ProductList extends React.Component {
             >
               Add this item to Cart
             </button>
-            <Link data-testid="product-detail-link" to={{ pathname: `./${product.id}`, state: product }}>
+            <Link
+              data-testid="product-detail-link"
+              to={{
+                pathname: `./${product.id}`,
+                test: { product },
+              }}
+            >
               Detalhe
             </Link>
           </div>
