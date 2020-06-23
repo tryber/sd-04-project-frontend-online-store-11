@@ -39,7 +39,6 @@ class ProductDetail extends Component {
           <h3>Especificações Técnicas</h3>
           <p>{attributes[0].value_name}</p>
           <p>{attributes[1].value_name}</p>
-          <p>{attributes[2].value_name}</p>
         </div>
         <RateProduct />
       </section>
