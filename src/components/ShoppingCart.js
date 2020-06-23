@@ -23,22 +23,11 @@ class ShoppingCart extends Component {
 
   render() {
     if (this.props.count === 0) {
-      return (
-        <div>
-          <h1>Carrinho de compras</h1>
-          <p data-testid="shopping-cart-empty-message">
-            Seu carrinho está vazio
-            {this.props.count}
-          </p>
-        </div>
-      );
+      return (<p data-testid="shopping-cart-empty-message"> Seu carrinho está vazio </p>);
     }
     const { cartProducts } = this.props;
     return (
       <div>
-        <h1>Carrinho de compras</h1>
-        <p>quantidade de produtos no seu carinho: </p>
-        {/* <p data-testid="shopping-cart-product-quantity">{count}</p> */}
         {cartProducts.map((product) => (
           <div data-testid="shopping-cart-product-name" key={product.id}>
             <p>{product.id}</p>
@@ -46,23 +35,16 @@ class ShoppingCart extends Component {
             <img src={product.selectedProduct.thumbnail} alt={product.title} />
             <div>
               <button
-                type="button"
-                data-testid="product-increase-quantity"
+                type="button" data-testid="product-increase-quantity"
                 onClick={() => this.addProductToCart(product)}
-              >
-                +
-              </button>
+              > + </button>
               <p>{product.quantity}</p>
-              <p data-testid="shopping-cart-product-quantity">
-                {product.quantity}
+              <p data-testid="shopping-cart-product-quantity"> {product.quantity}
               </p>
               <button
-                type="button"
-                data-testid="product-decrease-quantity"
+                type="button" data-testid="product-decrease-quantity" 
                 onClick={() => this.removeProductToCart(product)}
-              >
-                -
-              </button>
+              > - </button>
             </div>
           </div>
         ))}

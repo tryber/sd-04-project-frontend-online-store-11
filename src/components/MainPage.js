@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import ProductList from './ProductList';
 import Categories from './Categories';
@@ -29,7 +29,7 @@ class MainPage extends Component {
   }
 
   componentDidMount() {
-    api.getCategories().then(categories => this.setState({ categories }));
+    api.getCategories().then((categories) => this.setState({ categories }));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -37,7 +37,7 @@ class MainPage extends Component {
     if (prevState.selectedCategory !== this.state.selectedCategory) {
       api
         .getProductsFromCategoryAndQuery(selectedCategory, searchText)
-        .then(products => this.setState({ products }));
+        .then((products) => this.setState({ products }));
     }
   }
 
@@ -64,7 +64,7 @@ class MainPage extends Component {
         this.state.selectedCategory,
         this.state.searchText,
       )
-      .then(products => this.setState({ products }));
+      .then((products) => this.setState({ products }));
   }
 
   removeProductToCart(product) {
@@ -111,7 +111,7 @@ class MainPage extends Component {
         quantity: 1,
         selectedProduct: product,
       };
-      this.setState(state => {
+      this.setState((state) => {
         const cartProducts = [...state.cartProducts, newProduct];
         return { cartProducts };
       });
@@ -137,7 +137,6 @@ class MainPage extends Component {
 
   renderMainContent() {
     const { selectedCategory, products, categories } = this.state;
-    const { ...props } = this.props;
 
     return (
       <div>
@@ -156,7 +155,7 @@ class MainPage extends Component {
   }
 
   render() {
-    const { searchText, selectedCategory, categories, products } = this.state;
+    const { searchText, products } = this.state;
     return (
       <Router>
         <div className="App">
@@ -168,7 +167,7 @@ class MainPage extends Component {
             Digite algum termo de pesquisa ou escolha uma categoria.{' '}
           </p>
           <Switch>
-            <Route path="/ShoppingCart" render={props => this.renderCart(props)} />
+            <Route path="/ShoppingCart" render={(props) => this.renderCart(props)} />
             <Route
               exact path="/:id" render={(props) => (
                 <ProductDetail
