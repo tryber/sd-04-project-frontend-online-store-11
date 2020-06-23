@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import ProductList from './ProductList';
 import Categories from './Categories';
+import Header from './Header';
 import ShoppingCart from './ShoppingCart';
+import ProductDetail from './ProductDetail';
 import * as api from '../services/api';
 
 class MainPage extends Component {
@@ -20,6 +23,7 @@ class MainPage extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.onSelectedOptionChange = this.onSelectedOptionChange.bind(this);
     this.addProductToCart = this.addProductToCart.bind(this);
+    this.removeProductToCart = this.removeProductToCart.bind(this);
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
   }
@@ -63,6 +67,29 @@ class MainPage extends Component {
       .then((products) => this.setState({ products }));
   }
 
+  removeProductToCart(product) {
+    let flagRemove = false;
+    this.state.cartProducts.map((cartProduct, index) => {
+      if (cartProduct.id === product.id) {
+        if (product.quantity > 1) {
+          const cartProducts = [...this.state.cartProducts];
+          const cartProduct1 = {
+            ...cartProducts[index],
+            quantity: cartProducts[index].quantity - 1,
+          };
+          cartProducts[index] = cartProduct1;
+          this.setState({ cartProducts });
+        } else {
+          flagRemove = index;
+        }
+      }
+      return 2;
+    });
+    if (flagRemove === true) {
+      this.state.cartProducts.splice(flagRemove, 1);
+    }
+  }
+
   addProductToCart(product) {
     let flagExist = false;
     this.state.cartProducts.map((cartProduct, index) => {
@@ -91,22 +118,28 @@ class MainPage extends Component {
     }
   }
 
-  render() {
-    const { searchText, selectedCategory, categories, products } = this.state;
+  renderCart() {
+    const { cartProducts, count } = this.state;
+    const { ...props } = this.props;
+
+    return (
+      <ShoppingCart
+        {...props}
+        cartProducts={cartProducts}
+        count={count}
+        onClickAdd={this.addProductToCart}
+        onClickRemove={this.removeProductToCart}
+        onclickIncrement={this.increment}
+        onclickDecrement={this.decrement}
+      />
+    );
+  }
+
+  renderMainContent() {
+    const { selectedCategory, products, categories } = this.state;
+
     return (
       <div>
-        <SearchBar
-          searchText={searchText}
-          textChange={this.textChange}
-          onClickSearch={this.handleClick}
-        />
-        <p data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
-        <ShoppingCart
-          cartProducts={this.state.cartProducts}
-          count={this.state.count}
-        />
         <ProductList
           products={products}
           onClickAdd={this.addProductToCart}
@@ -118,6 +151,37 @@ class MainPage extends Component {
           onChangeOption={this.onSelectedOptionChange}
         />
       </div>
+    );
+  }
+
+  render() {
+    const { searchText, products } = this.state;
+    return (
+      <Router>
+        <div className="App">
+          <Header />
+          <SearchBar
+            searchText={searchText} textChange={this.textChange} onClickSearch={this.handleClick}
+          />
+          <p data-testid="home-initial-message">
+            Digite algum termo de pesquisa ou escolha uma categoria.{' '}
+          </p>
+          <Switch>
+            <Route path="/ShoppingCart" render={(props) => this.renderCart(props)} />
+            <Route
+              exact path="/:id" render={(props) => (
+                <ProductDetail
+                  id={props.match.params.id} product={props.location.test.product}
+                  products={products}
+                  onClickAdd={this.addProductToCart}
+                  onclickIncrement={this.increment}
+                />
+              )}
+            />
+            <Route exact path="/" render={(props) => this.renderMainContent(props)} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
