@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 // lembrar de data-testid="product-detail-link" no <Link> de ProductList
 class ProductDetail extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+    this.addProductToCart = this.addProductToCart.bind(this);
+  }
 
+  addProductToCart(product) {
+    this.props.location.state.clickToAdd(product);
+
+  } 
+
+  render() {
     if (typeof this.props.location.propsToDetail === 'undefined') {
       return <p>No Details</p>;
-
     }
 
     const {
@@ -13,7 +21,8 @@ class ProductDetail extends Component {
       price,
       thumbnail,
       attributes,
-    } = this.props.location.propsToDetail.state;
+    } = this.props.location.propsToDetail.product;
+    const { product } = this.props.location.propsToDetail;
     return (
       <section>
         <div>
@@ -22,6 +31,15 @@ class ProductDetail extends Component {
             {title} - R${price}
           </h1>
           <img src={thumbnail} alt={title} />
+        </div>
+        <div>
+          <button
+            type="button"
+            data-testid="product-detail-add-to-cart"
+            onClick={() => this.addProductToCart(product)}
+          >
+            Add this item to Cart
+          </button>
         </div>
         <div>
           <h3>Especificações Técnicas</h3>

@@ -10,7 +10,7 @@ class ProductList extends React.Component {
   clickToAdd(product) {
     this.props.onClickAdd(product);
     this.props.onclickIncrement();
-  } 
+  }
 
   render() {
     const { products } = this.props;
@@ -18,7 +18,7 @@ class ProductList extends React.Component {
     return (
       <div>
         <h1>ProductList</h1>
-        {products.results.map((product) => (
+        {products.results.map(product => (
           <div data-testid="product" key={product.id}>
             <p>{product.id}</p>
             <p>{product.title}</p>
@@ -30,7 +30,14 @@ class ProductList extends React.Component {
             >
               Add this item to Cart
             </button>
-            <Link data-testid="product-detail-link" to={{ pathname: `./${product.id}`, propsToDetail:{ state: product} }}>
+            <Link
+              data-testid="product-detail-link"
+              to={{
+                pathname: `./${product.id}`,
+                propsToDetail: { product: product },
+                state: { onClickAdd: this.props.clickToAdd },
+              }}
+            >
               Detalhe
             </Link>
           </div>
