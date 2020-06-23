@@ -28,7 +28,7 @@ class ShoppingCart extends Component {
         <p data-testid="shopping-cart-product-quantity">
           quantidade de produtos no seu carinho: {count}
         </p>
-        {cartProducts.map(product => (
+        {cartProducts.map((product) => (
           <div data-testid="shopping-cart-product-name" key={product.id}>
             <p>{product.id}</p>
             <p>{product.selectedProduct.title}</p>

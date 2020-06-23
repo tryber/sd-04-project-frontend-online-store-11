@@ -18,7 +18,7 @@ class ProductList extends React.Component {
     return (
       <div>
         <h1>ProductList</h1>
-        {products.results.map(product => (
+        {products.results.map((product) => (
           <div data-testid="product" key={product.id}>
             <p>{product.id}</p>
             <p>{product.title}</p>
@@ -35,7 +35,6 @@ class ProductList extends React.Component {
               to={{
                 pathname: `./${product.id}`,
                 test: { product: product },
-                // state: { onClickAdd: this.props.clickToAdd },
               }}
             >
               Detalhe

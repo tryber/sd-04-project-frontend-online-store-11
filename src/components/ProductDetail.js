@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// lembrar de data-testid="product-detail-link" no <Link> de ProductList
+
 class ProductDetail extends Component {
   constructor(props) {
     super(props);
@@ -9,35 +9,13 @@ class ProductDetail extends Component {
   addProductToCart(product) {
     this.props.onClickAdd(product);
     this.props.onclickIncrement();
-
-  } 
+  }
 
   render() {
-
-      
-  if (this.props.products.length === 0) {
+    if (this.props.products.length === 0) {
       return <p>No Details</p>;
     }
-
-
-    // if (typeof this.props.location.propsToDetail === 'undefined') {
-    //   return <p>No Details</p>;
-    // }
-
-    const {
-      title,
-      price,
-      thumbnail,
-      attributes,
-    } = this.props.product;
-    // const { products } = this.props.products;
-    // return (
-    //   <p>
-    //     test
-      
-    //     {title}
-    //   </p>
-    // )
+    const { title, price, thumbnail, attributes } = this.props.product;
     return (
       <section>
         <div>

@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import ProductList from './ProductList';
 import Categories from './Categories';
-import Cart from './shop.png';
 import Header from './Header';
 import ShoppingCart from './ShoppingCart';
 import ProductDetail from './ProductDetail';
@@ -29,7 +28,7 @@ class MainPage extends Component {
   }
 
   componentDidMount() {
-    api.getCategories().then(categories => this.setState({ categories }));
+    api.getCategories().then((categories) => this.setState({ categories }));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -37,7 +36,7 @@ class MainPage extends Component {
     if (prevState.selectedCategory !== this.state.selectedCategory) {
       api
         .getProductsFromCategoryAndQuery(selectedCategory, searchText)
-        .then(products => this.setState({ products }));
+        .then((products) => this.setState({ products }));
     }
   }
 
@@ -64,7 +63,7 @@ class MainPage extends Component {
         this.state.selectedCategory,
         this.state.searchText,
       )
-      .then(products => this.setState({ products }));
+      .then((products) => this.setState({ products }));
   }
 
   addProductToCart(product) {
@@ -88,7 +87,7 @@ class MainPage extends Component {
         quantity: 1,
         selectedProduct: product,
       };
-      this.setState(state => {
+      this.setState((state) => {
         const cartProducts = [...state.cartProducts, newProduct];
         return { cartProducts };
       });
@@ -123,17 +122,16 @@ class MainPage extends Component {
                 />
               )}
             />
-            {/* <Route path="/:id" exact component={ProductDetail} /> */}
             <Route
-            exact
-             path="/:id"
+              exact
+              path="/:id"
               render={props => (
                 <ProductDetail
-                id={props.match.params.id}
-                product={props.location.test.product}
-                products={products}
-                onClickAdd={this.addProductToCart}
-                onclickIncrement={this.increment}
+                  id={props.match.params.id}
+                  product={props.location.test.product}
+                  products={products}
+                  onClickAdd={this.addProductToCart}
+                  onclickIncrement={this.increment}
                 />
               )}
             />
@@ -158,33 +156,6 @@ class MainPage extends Component {
           </Switch>
         </div>
       </Router>
-
-      // <div>
-      //   <SearchBar
-      //     searchText={searchText}
-      //     textChange={this.textChange}
-      //     onClickSearch={this.handleClick}
-      //   />
-      //   <p data-testid="home-initial-message">
-      //     Digite algum termo de pesquisa ou escolha uma categoria.
-      //   </p>
-
-      //   <ShoppingCart
-      //     cartProducts={this.state.cartProducts}
-      //     count={this.state.count}
-      //   />
-
-      //   <ProductList
-      //     products={products}
-      //     onClickAdd={this.addProductToCart}
-      //     onclickIncrement={this.increment}
-      //   />
-      //   <Categories
-      //     selectedCategory={selectedCategory}
-      //     categories={categories}
-      //     onChangeOption={this.onSelectedOptionChange}
-      //   />
-      // </div>
     );
   }
 }
