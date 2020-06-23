@@ -45,22 +45,22 @@ class ShoppingCart extends Component {
             <p>{product.id}</p>
             <p>{product.selectedProduct.title}</p>
             <img src={product.selectedProduct.thumbnail} alt={product.title} />
-              <button
-                type="button" data-testid="product-increase-quantity"
-                onClick={() => this.addProductToCart(product)}
-              >
-                +
-              </button>
-              <p data-testid="shopping-cart-product-quantity">
-                {product.quantity}
-              </p>
-              <button
-                type="button" data-testid="product-decrease-quantity"
-                onClick={() => this.removeProductToCart(product)}
-              >
-                -
-              </button>
-          </div>
+            <button
+              type="button" data-testid="product-increase-quantity"
+              onClick={() => this.addProductToCart(product)}
+            >
+              +
+            </button>
+            <p data-testid="shopping-cart-product-quantity">
+              {product.quantity}
+            </p>
+            <button
+              type="button" data-testid="product-decrease-quantity"
+              onClick={() => this.removeProductToCart(product)}
+            >
+              -
+            </button>
+        </div>
         ))}
       </div>
     );
