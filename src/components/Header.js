@@ -9,6 +9,10 @@ class Header extends React.Component {
         <Link to="/">
           <img src={Logo} alt="logo" />
         </Link>
+        <Link data-testid="shopping-cart-button" to="/ShoppingCart">
+          {' '}
+          ShoppingCart{' '}
+        </Link>
       </div>
     );
   }

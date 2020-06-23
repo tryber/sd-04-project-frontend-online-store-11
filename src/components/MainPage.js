@@ -29,7 +29,7 @@ class MainPage extends Component {
   }
 
   componentDidMount() {
-    api.getCategories().then((categories) => this.setState({ categories }));
+    api.getCategories().then(categories => this.setState({ categories }));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -64,7 +64,7 @@ class MainPage extends Component {
         this.state.selectedCategory,
         this.state.searchText,
       )
-      .then((products) => this.setState({ products }));
+      .then(products => this.setState({ products }));
   }
 
   removeProductToCart(product) {
@@ -111,11 +111,48 @@ class MainPage extends Component {
         quantity: 1,
         selectedProduct: product,
       };
-      this.setState((state) => {
+      this.setState(state => {
         const cartProducts = [...state.cartProducts, newProduct];
         return { cartProducts };
       });
     }
+  }
+
+  renderCart() {
+    const { cartProducts, count } = this.state;
+    const { ...props } = this.props;
+
+    return (
+      <ShoppingCart
+        {...props}
+        cartProducts={cartProducts}
+        count={count}
+        onClickAdd={this.addProductToCart}
+        onClickRemove={this.removeProductToCart}
+        onclickIncrement={this.increment}
+        onclickDecrement={this.decrement}
+      />
+    );
+  }
+
+  renderMainContent() {
+    const { selectedCategory, products, categories } = this.state;
+    const { ...props } = this.props;
+
+    return (
+      <div>
+        <ProductList
+          products={products}
+          onClickAdd={this.addProductToCart}
+          onclickIncrement={this.increment}
+        />
+        <Categories
+          selectedCategory={selectedCategory}
+          categories={categories}
+          onChangeOption={this.onSelectedOptionChange}
+        />
+      </div>
+    );
   }
 
   render() {
@@ -124,63 +161,25 @@ class MainPage extends Component {
       <Router>
         <div className="App">
           <Header />
-          <Link data-testid="shopping-cart-button" to="/ShoppingCart">
-            {' '}
-            ShoppingCart{' '}
-          </Link>
           <SearchBar
-            searchText={searchText}
-            textChange={this.textChange}
-            onClickSearch={this.handleClick}
+            searchText={searchText} textChange={this.textChange} onClickSearch={this.handleClick}
           />
           <p data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.{' '}
           </p>
           <Switch>
+            <Route path="/ShoppingCart" render={props => this.renderCart(props)} />
             <Route
-              path="/ShoppingCart"
-              render={props => (
-                <ShoppingCart
-                  cartProducts={this.state.cartProducts}
-                  count={this.state.count}
-                  onClickAdd={this.addProductToCart}
-                  onClickRemove={this.removeProductToCart}
-                  onclickIncrement={this.increment}
-                  onclickDecrement={this.decrement}
-                />
-              )}
-            />
-            <Route
-              exact
-              path="/:id"
-              render={props => (
+              exact path="/:id" render={(props) => (
                 <ProductDetail
-                  id={props.match.params.id}
-                  product={props.location.test.product}
+                  id={props.match.params.id} product={props.location.test.product}
                   products={products}
                   onClickAdd={this.addProductToCart}
                   onclickIncrement={this.increment}
                 />
               )}
             />
-            <Route
-              exact
-              path="/"
-              render={props => (
-                <div>
-                  <ProductList
-                    products={products}
-                    onClickAdd={this.addProductToCart}
-                    onclickIncrement={this.increment}
-                  />
-                  <Categories
-                    selectedCategory={selectedCategory}
-                    categories={categories}
-                    onChangeOption={this.onSelectedOptionChange}
-                  />
-                </div>
-              )}
-            />
+            <Route exact path="/" render={(props) => this.renderMainContent(props)} />
           </Switch>
         </div>
       </Router>

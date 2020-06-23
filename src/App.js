@@ -8,16 +8,19 @@ import ShoppingCart from './components/ShoppingCart';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Switch>
-          <Route path="/" component={MainPage} />
-          <Route path="/ShoppingCart" component={ShoppingCart} />
-          <Route path="/:id" component={ProductDetail} />
-        </Switch>
-      </div>
-    </Router>
+    <div className="App">
+      <MainPage />
+    </div>
+    // <Router>
+    //   <div className="App">
+    //     <Header />
+    //     <Switch>
+    //       <Route path="/" component={MainPage} />
+    //       <Route path="/ShoppingCart" component={ShoppingCart} />
+    //       <Route path="/:id" component={ProductDetail} />
+    //     </Switch>
+    //   </div>
+    // </Router>
   );
 }
 
