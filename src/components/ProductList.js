@@ -34,7 +34,6 @@ class ProductList extends React.Component {
               data-testid="product-detail-link"
               to={{
                 pathname: `./${product.id}`,
-                // test: { product: product },
                 test: { product },
               }}
             >
