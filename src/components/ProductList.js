@@ -30,7 +30,7 @@ class ProductList extends React.Component {
             >
               Add this item to Cart
             </button>
-            <Link to={{ pathname: `./${product.id}`, state: product }}>
+            <Link data-testid="product-detail-link" to={{ pathname: `./${product.id}`, state: product }}>
               Detalhe
             </Link>
           </div>

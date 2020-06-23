@@ -22,17 +22,17 @@ class RateProduct extends Component {
           <div className="frst-line">
             <input
               className="rate-email" name="email" data-testid="product-detail-evaluation"
-              type="email" placeholder="Email" value={textEmail}
+              type="email" placeholder="Email" defaultValue={textEmail}
             />
             <ReactStars
               className="react-stars" count={5} size={28}
-              color={'#ffd700'} value={rating}
+              color={'#ffd700'} defaultValue={rating}
             />
           </div>
           <div className="sec-line">
             <textarea
               className="rate-area" type="text"
-              placeholder="Mensagem(opcional)" value={textArea}
+              placeholder="Mensagem(opcional)" defaultValue={textArea}
             />
             <button className="rate-button">Avaliar</button>
           </div>
