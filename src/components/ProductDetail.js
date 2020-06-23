@@ -7,22 +7,37 @@ class ProductDetail extends Component {
   }
 
   addProductToCart(product) {
-    this.props.location.state.clickToAdd(product);
+    this.props.onClickAdd(product);
+    this.props.onclickIncrement();
 
   } 
 
   render() {
-    if (typeof this.props.location.propsToDetail === 'undefined') {
+
+      
+  if (this.props.products.length === 0) {
       return <p>No Details</p>;
     }
+
+
+    // if (typeof this.props.location.propsToDetail === 'undefined') {
+    //   return <p>No Details</p>;
+    // }
 
     const {
       title,
       price,
       thumbnail,
       attributes,
-    } = this.props.location.propsToDetail.product;
-    const { product } = this.props.location.propsToDetail;
+    } = this.props.product;
+    // const { products } = this.props.products;
+    // return (
+    //   <p>
+    //     test
+      
+    //     {title}
+    //   </p>
+    // )
     return (
       <section>
         <div>
@@ -36,7 +51,7 @@ class ProductDetail extends Component {
           <button
             type="button"
             data-testid="product-detail-add-to-cart"
-            onClick={() => this.addProductToCart(product)}
+            onClick={() => this.addProductToCart(this.props.product)}
           >
             Add this item to Cart
           </button>

@@ -34,8 +34,8 @@ class ProductList extends React.Component {
               data-testid="product-detail-link"
               to={{
                 pathname: `./${product.id}`,
-                propsToDetail: { product: product },
-                state: { onClickAdd: this.props.clickToAdd },
+                test: { product: product },
+                // state: { onClickAdd: this.props.clickToAdd },
               }}
             >
               Detalhe

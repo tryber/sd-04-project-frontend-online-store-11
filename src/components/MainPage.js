@@ -123,7 +123,20 @@ class MainPage extends Component {
                 />
               )}
             />
-            <Route path="/:id" exact component={ProductDetail} />
+            {/* <Route path="/:id" exact component={ProductDetail} /> */}
+            <Route
+            exact
+             path="/:id"
+              render={props => (
+                <ProductDetail
+                id={props.match.params.id}
+                product={props.location.test.product}
+                products={products}
+                onClickAdd={this.addProductToCart}
+                onclickIncrement={this.increment}
+                />
+              )}
+            />
             <Route
               exact
               path="/"
