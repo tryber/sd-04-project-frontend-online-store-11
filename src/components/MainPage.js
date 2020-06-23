@@ -100,57 +100,34 @@ class MainPage extends Component {
       <Router>
         <div className="App">
           <Header />
-          <Link data-testid="shopping-cart-button" to="/ShoppingCart">
-            ShoppingCart
-            {/* <img src={Cart}alt="Cart" /> */}
-          </Link>
-          <SearchBar
-            searchText={searchText}
-            textChange={this.textChange}
-            onClickSearch={this.handleClick}
-          />
+          <Link data-testid="shopping-cart-button" to="/ShoppingCart"> ShoppingCart </Link>
+          <SearchBar searchText={searchText} textChange={this.textChange} 
+          onClickSearch={this.handleClick} />
           <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
+            Digite algum termo de pesquisa ou escolha uma categoria. </p>
           <Switch>
-            <Route
-              path="/ShoppingCart"
-              render={props => (
-                <ShoppingCart
-                  cartProducts={this.state.cartProducts}
-                  count={this.state.count}
-                />
+            <Route path="/ShoppingCart" render={props => (
+                <ShoppingCart cartProducts={this.state.cartProducts}
+                  count={this.state.count} />
               )}
             />
             <Route
               exact
-              path="/:id"
-              render={props => (
-                <ProductDetail
-                  id={props.match.params.id}
-                  product={props.location.test.product}
-                  products={products}
-                  onClickAdd={this.addProductToCart}
-                  onclickIncrement={this.increment}
-                />
+              path="/:id" render={props => (
+                <ProductDetail id={props.match.params.id} product={props.location.test.product}
+                products={products} onClickAdd={this.addProductToCart} 
+                onclickIncrement={this.increment} />
               )}
             />
             <Route
-              exact
-              path="/"
-              render={props => (
-                <>
-                  <ProductList
-                    products={products}
-                    onClickAdd={this.addProductToCart}
-                    onclickIncrement={this.increment}
-                  />
+              exact path="/" render={props => (
+                <div>
+                  <ProductList products={products} onClickAdd={this.addProductToCart}
+                  onclickIncrement={this.increment} />
                   <Categories
-                    selectedCategory={selectedCategory}
-                    categories={categories}
-                    onChangeOption={this.onSelectedOptionChange}
-                  />
-                </>
+                  selectedCategory={selectedCategory} categories={categories}
+                  onChangeOption={this.onSelectedOptionChange} />
+                </div>
               )}
             />
           </Switch>
