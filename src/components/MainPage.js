@@ -141,16 +141,16 @@ class MainPage extends Component {
 
     return (
       <div>
-        {/* <SearchBarContent
-          searchText={searchText}
-          textChange={this.textChange}
-          onClickSearch={this.onClickSearch}
-        /> */}
-        <SearchBar
+        <SearchBarContent
           searchText={searchText}
           textChange={this.textChange}
           onClickSearch={this.onClickSearch}
         />
+        {/* <SearchBar
+          searchText={searchText}
+          textChange={this.textChange}
+          onClickSearch={this.onClickSearch}
+        /> */}
         <ProductList
           products={products}
           onClickAdd={this.addProductToCart}

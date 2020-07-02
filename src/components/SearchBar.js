@@ -3,16 +3,18 @@ import React, { Component } from 'react';
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-    this.onClickSearch = this.onClickSearch.bind(this);
+    // this.onClickSearch = this.onClickSearch.bind(this);
   }
 
-  onClickSearch(event) {
-    this.props.onClickSearch(event);
-    event.preventDefault();
-  }
+  // onClickSearch(event) {
+  //   this.props.onClickSearch(event);
+  //   event.preventDefault();
+  // }
+
+// buton fora do Form
 
   render() {
-    const { searchText, textChange } = this.props;
+    const { searchText, textChange, onClickSearch } = this.props;
     return (
       <div>
         <form>
@@ -25,7 +27,7 @@ class SearchBar extends Component {
           />
           <button
             type="button"
-            onClick={this.onClickSearch}
+            onClick={onClickSearch}
             data-testid="query-button"
           >
             buscar

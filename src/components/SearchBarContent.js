@@ -4,19 +4,19 @@ import SearchBar from './SearchBar';
 class SearchBarContent extends React.Component {
   constructor(props) {
     super(props);
-    this.onClickSearch = this.onClickSearch.bind(this);
-    this.textChange = this.textChange.bind(this);
+    // this.onClickSearch = this.onClickSearch.bind(this);
+    // this.textChange = this.textChange.bind(this);
   }
 
-  onClickSearch(event) {
-    this.props.onClickSearch(event);
-    event.preventDefault();
-  }
+  // onClickSearch() {
+  //   this.props.onClickSearch();
+  //   // event.preventDefault();
+  // }
 
-  textChange(event) {
-    this.props.textChange();
-    event.preventDefault();
-  }
+  // textChange(event) {
+  //   this.props.textChange(event);
+  //   event.preventDefault();
+  // }
 
   render() {
     const { searchText } = this.props;
@@ -25,8 +25,8 @@ class SearchBarContent extends React.Component {
         <p>Test Searchbar content</p>
         <SearchBar
           searchText={searchText}
-          textChange={this.textChange}
-          onClickSearch={this.onClickSearch}
+          textChange={this.props.textChange}
+          onClickSearch={this.props.onClickSearch}
         />
       </div>
     );
