@@ -136,10 +136,15 @@ class MainPage extends Component {
   }
 
   renderMainContent() {
-    const { selectedCategory, products, categories } = this.state;
+    const { selectedCategory, products, categories, searchText } = this.state;
 
     return (
       <div>
+        <SearchBar
+          searchText={searchText}
+          textChange={this.textChange}
+          onClickSearch={this.handleClick}
+        />
         <ProductList
           products={products}
           onClickAdd={this.addProductToCart}
@@ -155,30 +160,34 @@ class MainPage extends Component {
   }
 
   render() {
-    const { searchText, products } = this.state;
+    const { products } = this.state;
     return (
       <Router>
         <div className="App">
           <Header />
-          <SearchBar
-            searchText={searchText} textChange={this.textChange} onClickSearch={this.handleClick}
-          />
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.{' '}
-          </p>
           <Switch>
-            <Route path="/ShoppingCart" render={(props) => this.renderCart(props)} />
             <Route
-              exact path="/:id" render={(props) => (
+              path="/ShoppingCart"
+              render={(props) => this.renderCart(props)}
+            />
+            <Route
+              exact
+              path="/:id"
+              render={(props) => (
                 <ProductDetail
-                  id={props.match.params.id} product={props.location.test.product}
+                  id={props.match.params.id}
+                  product={props.location.test.product}
                   products={products}
                   onClickAdd={this.addProductToCart}
                   onclickIncrement={this.increment}
                 />
               )}
             />
-            <Route exact path="/" render={(props) => this.renderMainContent(props)} />
+            <Route
+              exact
+              path="/"
+              render={(props) => this.renderMainContent(props)}
+            />
           </Switch>
         </div>
       </Router>

@@ -38,7 +38,6 @@ class ShoppingCart extends Component {
                 type="button" data-testid="product-increase-quantity"
                 onClick={() => this.addProductToCart(product)}
               > + </button>
-              <p>{product.quantity}</p>
               <p data-testid="shopping-cart-product-quantity"> {product.quantity}
               </p>
               <button

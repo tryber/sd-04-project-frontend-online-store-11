@@ -6,12 +6,18 @@
   background-color: yellow;
   color: aliceblue;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   min-height: 5vh;
 }
 .nav img {
   align-items: center;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   width: 20%;
+
+}
+
+.shoppingCartLink {
+  display: flex;
+  justify-content: space-between; 
 }

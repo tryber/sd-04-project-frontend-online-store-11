@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    this.handleSearch = this.handleSearch.bind(this);
-  }
-
-  handleSearch(event) {
-    this.props.onClickSearch();
-    event.preventDefault();
-  }
-
   render() {
-    const { searchText, textChange } = this.props;
+    const { searchText, textChange, onClickSearch } = this.props;
     return (
-      <form>
+      <div>
         <input
           data-testid="query-input"
           type="text"
@@ -22,10 +12,17 @@ class SearchBar extends Component {
           value={searchText}
           onChange={textChange}
         />
-        <button type="button" onClick={this.handleSearch} data-testid="query-button">
+        <button
+          type="button"
+          onClick={onClickSearch}
+          data-testid="query-button"
+        >
           buscar
         </button>
-      </form>
+        <p data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.{' '}
+        </p>
+      </div>
     );
   }
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './logo.png';
+import shop from './shop.png';
+import './Header.css';
 
 class Header extends React.Component {
   render() {
@@ -9,9 +11,12 @@ class Header extends React.Component {
         <Link to="/">
           <img src={Logo} alt="logo" />
         </Link>
-        <Link data-testid="shopping-cart-button" to="/ShoppingCart">
-          {' '}
-          ShoppingCart{' '}
+        <Link
+          className="shoppingCartLink"
+          data-testid="shopping-cart-button"
+          to="/ShoppingCart"
+        >
+          <img src={shop} alt="shoppingCart" />
         </Link>
       </div>
     );
