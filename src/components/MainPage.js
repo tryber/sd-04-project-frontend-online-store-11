@@ -167,12 +167,10 @@ class MainPage extends Component {
           <Header />
           <Switch>
             <Route
-              path="/ShoppingCart"
-              render={(props) => this.renderCart(props)}
+              path="/ShoppingCart" render={(props) => this.renderCart(props)}
             />
             <Route
-              exact
-              path="/:id"
+              exact path="/:id"
               render={(props) => (
                 <ProductDetail
                   id={props.match.params.id}
@@ -184,9 +182,7 @@ class MainPage extends Component {
               )}
             />
             <Route
-              exact
-              path="/"
-              render={(props) => this.renderMainContent(props)}
+              exact path="/" render={(props) => this.renderMainContent(props)}
             />
           </Switch>
         </div>

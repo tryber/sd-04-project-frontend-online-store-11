@@ -14,10 +14,5 @@
   display: flex;
   justify-content: center;
   width: 20%;
-
 }
 
-.shoppingCartLink {
-  display: flex;
-  justify-content: space-between; 
-}
