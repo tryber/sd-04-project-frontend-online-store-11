@@ -6,6 +6,7 @@ import Categories from './Categories';
 import Header from './Header';
 import ShoppingCart from './ShoppingCart';
 import ProductDetail from './ProductDetail';
+import SearchBarContent from './SearchBarContent';
 import * as api from '../services/api';
 
 class MainPage extends Component {
@@ -20,7 +21,7 @@ class MainPage extends Component {
       count: 0,
     };
     this.textChange = this.textChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.onClickSearch = this.onClickSearch.bind(this);
     this.onSelectedOptionChange = this.onSelectedOptionChange.bind(this);
     this.addProductToCart = this.addProductToCart.bind(this);
     this.removeProductToCart = this.removeProductToCart.bind(this);
@@ -58,7 +59,7 @@ class MainPage extends Component {
     this.setState({ [name]: value });
   }
 
-  handleClick() {
+  onClickSearch() {
     api
       .getProductsFromCategoryAndQuery(
         this.state.selectedCategory,
@@ -136,10 +137,20 @@ class MainPage extends Component {
   }
 
   renderMainContent() {
-    const { selectedCategory, products, categories } = this.state;
+    const { searchText, selectedCategory, products, categories } = this.state;
 
     return (
       <div>
+        {/* <SearchBarContent
+          searchText={searchText}
+          textChange={this.textChange}
+          onClickSearch={this.onClickSearch}
+        /> */}
+        <SearchBar
+          searchText={searchText}
+          textChange={this.textChange}
+          onClickSearch={this.onClickSearch}
+        />
         <ProductList
           products={products}
           onClickAdd={this.addProductToCart}
@@ -155,30 +166,34 @@ class MainPage extends Component {
   }
 
   render() {
-    const { searchText, products } = this.state;
+    const { products } = this.state;
     return (
       <Router>
         <div className="App">
           <Header />
-          <SearchBar
-            searchText={searchText} textChange={this.textChange} onClickSearch={this.handleClick}
-          />
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.{' '}
-          </p>
           <Switch>
-            <Route path="/ShoppingCart" render={(props) => this.renderCart(props)} />
             <Route
-              exact path="/:id" render={(props) => (
+              path="/ShoppingCart"
+              render={(props) => this.renderCart(props)}
+            />
+            <Route
+              exact
+              path="/:id"
+              render={(props) => (
                 <ProductDetail
-                  id={props.match.params.id} product={props.location.test.product}
+                  id={props.match.params.id}
+                  product={props.location.test.product}
                   products={products}
                   onClickAdd={this.addProductToCart}
                   onclickIncrement={this.increment}
                 />
               )}
             />
-            <Route exact path="/" render={(props) => this.renderMainContent(props)} />
+            <Route
+              exact
+              path="/"
+              render={(props) => this.renderMainContent(props)}
+            />
           </Switch>
         </div>
       </Router>
