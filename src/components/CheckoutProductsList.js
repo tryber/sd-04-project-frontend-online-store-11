@@ -26,7 +26,7 @@ class CheckoutProductsList extends React.Component {
   render() {
     const { cartProducts } = this.props;
     this.totalPriceSum();
-    let count = 0;
+    // let count = 0;
     return (
       <div>
         <p>Checkout Here!</p>

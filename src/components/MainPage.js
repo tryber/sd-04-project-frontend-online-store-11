@@ -168,11 +168,11 @@ class MainPage extends Component {
           <Header />
           <Switch>
             <Route
-              path="/ShoppingCart"
-              render={(props) => this.renderCart(props)}
+              path="/ShoppingCart" render={(props) => this.renderCart(props)}
             />
             <Route
-              path="/checkout" render={(props) => (<Checkout {...props} cartProducts={cartProducts} />)}
+              path="/checkout" 
+              render={(props) => (<Checkout {...props} cartProducts={cartProducts} />)}
             />
             <Route
               exact path="/:id" render={(props) => (
