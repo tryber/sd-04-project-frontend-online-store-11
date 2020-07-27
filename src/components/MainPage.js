@@ -94,7 +94,12 @@ class MainPage extends Component {
   addProductToCart(product) {
     let flagExist = false;
     this.state.cartProducts.map((cartProduct, index) => {
-      if (cartProduct.id === product.id) {
+      const stockOk = cartProduct.selectedProduct.sold_quantity === cartProduct.quantity;
+      console.log("stockOk", stockOk);
+      if (cartProduct.id === product.id && stockOk) {
+        flagExist = true;
+      }
+      if (cartProduct.id === product.id && !stockOk) {
         flagExist = true;
         const cartProducts = [...this.state.cartProducts];
         const cartProduct1 = {
