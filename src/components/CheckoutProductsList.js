@@ -32,8 +32,8 @@ class CheckoutProductsList extends React.Component {
         <p>Checkout Here!</p>
         {cartProducts.map(
           (product) => (
-            (count = count + 1),
-            console.log('count', count),
+            // (count = count + 1),
+            // console.log('count', count),
             (
               <div key={product.id}>
                 <img

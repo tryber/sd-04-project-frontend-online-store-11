@@ -172,13 +172,12 @@ class MainPage extends Component {
               render={(props) => this.renderCart(props)}
             />
             <Route
-              path="/checkout"
-              render={(props) => (<Checkout {...props} cartProducts={cartProducts} />)}
+              path="/checkout" render={(props) => (<Checkout {...props} cartProducts={cartProducts} />)}
             />
             <Route
               exact path="/:id" render={(props) => (
                 <ProductDetail
-                  id={props.match.params.id} product={props.location.test.product} 
+                  id={props.match.params.id} product={props.location.test.product}
                   products={products}
                   onClickAdd={this.addProductToCart}
                   onclickIncrement={this.increment}
