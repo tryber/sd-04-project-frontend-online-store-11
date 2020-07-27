@@ -5,6 +5,7 @@ import ProductList from './ProductList';
 import Categories from './Categories';
 import Header from './Header';
 import ShoppingCart from './ShoppingCart';
+import Checkout from './Checkout';
 import ProductDetail from './ProductDetail';
 import * as api from '../services/api';
 
@@ -160,17 +161,25 @@ class MainPage extends Component {
   }
 
   render() {
-    const { products } = this.state;
+    const { products, cartProducts } = this.state;
     return (
       <Router>
         <div className="App">
           <Header />
           <Switch>
             <Route
-              path="/ShoppingCart" render={(props) => this.renderCart(props)}
+              path="/ShoppingCart"
+              render={(props) => this.renderCart(props)}
             />
             <Route
-              exact path="/:id"
+              path="/checkout"
+              render={(props) => (
+                <Checkout {...props} cartProducts={cartProducts} />
+              )}
+            />
+            <Route
+              exact
+              path="/:id"
               render={(props) => (
                 <ProductDetail
                   id={props.match.params.id}
@@ -182,7 +191,9 @@ class MainPage extends Component {
               )}
             />
             <Route
-              exact path="/" render={(props) => this.renderMainContent(props)}
+              exact
+              path="/"
+              render={(props) => this.renderMainContent(props)}
             />
           </Switch>
         </div>

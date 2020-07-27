@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class ShoppingCart extends Component {
   constructor(props) {
@@ -23,30 +24,53 @@ class ShoppingCart extends Component {
 
   render() {
     if (this.props.count === 0) {
-      return (<p data-testid="shopping-cart-empty-message"> Seu carrinho está vazio </p>);
+      return (
+        <p data-testid="shopping-cart-empty-message">
+          {' '}
+          Seu carrinho está vazio{' '}
+        </p>
+      );
     }
     const { cartProducts } = this.props;
     return (
       <div>
-        {cartProducts.map((product) => (
-          <div data-testid="shopping-cart-product-name" key={product.id}>
-            <p>{product.id}</p>
-            <p>{product.selectedProduct.title}</p>
-            <img src={product.selectedProduct.thumbnail} alt={product.title} />
-            <div>
-              <button
-                type="button" data-testid="product-increase-quantity"
-                onClick={() => this.addProductToCart(product)}
-              > + </button>
-              <p data-testid="shopping-cart-product-quantity"> {product.quantity}
-              </p>
-              <button
-                type="button" data-testid="product-decrease-quantity"
-                onClick={() => this.removeProductToCart(product)}
-              > - </button>
+        <Link data-testid="checkout-products" to="/checkout">
+          <button type="button">Checkout</button>
+        </Link>
+        <div>
+          {cartProducts.map((product) => (
+            <div data-testid="shopping-cart-product-name" key={product.id}>
+              <p>{product.id}</p>
+              <p>{product.selectedProduct.title}</p>
+              <img
+                src={product.selectedProduct.thumbnail}
+                alt={product.title}
+              />
+              <div>
+                <button
+                  type="button"
+                  data-testid="product-increase-quantity"
+                  onClick={() => this.addProductToCart(product)}
+                >
+                  {' '}
+                  +{' '}
+                </button>
+                <p data-testid="shopping-cart-product-quantity">
+                  {' '}
+                  {product.quantity}
+                </p>
+                <button
+                  type="button"
+                  data-testid="product-decrease-quantity"
+                  onClick={() => this.removeProductToCart(product)}
+                >
+                  {' '}
+                  -{' '}
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   }
