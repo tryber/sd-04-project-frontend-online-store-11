@@ -171,7 +171,7 @@ class MainPage extends Component {
               path="/ShoppingCart" render={(props) => this.renderCart(props)}
             />
             <Route
-              path="/checkout" 
+              path="/checkout"
               render={(props) => (<Checkout {...props} cartProducts={cartProducts} />)}
             />
             <Route
