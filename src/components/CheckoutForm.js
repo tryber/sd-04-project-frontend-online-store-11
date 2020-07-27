@@ -25,7 +25,7 @@ class CheckoutForm extends React.Component {
 
   nameFormRender() {
     return (
-      <label>
+      <label htmlFor="name">
         Name :
         <input
           name="name"
@@ -40,7 +40,7 @@ class CheckoutForm extends React.Component {
 
   phoneFormRender() {
     return (
-      <label>
+      <label htmlFor="phone">
         Phone :
         <input
           name="phone"
@@ -55,7 +55,7 @@ class CheckoutForm extends React.Component {
 
   CEPFormRender() {
     return (
-      <label>
+      <label htmlFor="cep">
         CEP :
         <input
           name="CEP"
@@ -70,7 +70,7 @@ class CheckoutForm extends React.Component {
 
   adressFormRender() {
     return (
-      <label>
+      <label htmlFor="adress">
         Adress :
         <textarea
           name="adress"
@@ -88,7 +88,7 @@ class CheckoutForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <this.nameFormRender />
 
-        <label>
+        <label htmlFor="email">
           Email :
           <input
             name="email"
@@ -98,7 +98,7 @@ class CheckoutForm extends React.Component {
             onChange={this.handleChange}
           />
         </label>
-        <label>
+        <label htmlFor="cpf">
           CPF :
           <input
             name="cpf"
