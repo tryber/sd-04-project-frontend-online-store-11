@@ -62,7 +62,6 @@ class ShoppingCart extends Component {
         <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
       );
     }
-    const { cartProducts } = this.props;
     return (
       <div>
         <Link data-testid="checkout-products" to="/checkout">

@@ -14,10 +14,9 @@ class CheckoutProductsList extends React.Component {
     let totalPrice = 0;
     const { cartProducts } = this.props;
     if (cartProducts.length > 0) {
-      console.log("inside totalprice cartProducts", cartProducts);
+      console.log('inside totalprice cartProducts', cartProducts);
       cartProducts.map((product) => {
-        totalPrice +=
-          product.selectedProduct.price * product.quantity;
+        totalPrice += product.selectedProduct.price * product.quantity;
         return totalPrice;
       });
     }
@@ -29,7 +28,7 @@ class CheckoutProductsList extends React.Component {
     this.totalPriceSum();
     let count = 0;
     return (
-      <>
+      <div>
         <p>Checkout Here!</p>
         {cartProducts.map(
           (product) => (
@@ -51,7 +50,7 @@ class CheckoutProductsList extends React.Component {
           ),
         )}
         <h3>Total: {this.totalPriceSum()}</h3>
-      </>
+      </div>
     );
   }
 }

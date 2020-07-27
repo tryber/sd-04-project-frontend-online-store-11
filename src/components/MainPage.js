@@ -178,7 +178,8 @@ class MainPage extends Component {
             <Route
               exact path="/:id" render={(props) => (
                 <ProductDetail
-                  id={props.match.params.id} product={props.location.test.product} products={products}
+                  id={props.match.params.id} product={props.location.test.product} 
+                  products={products}
                   onClickAdd={this.addProductToCart}
                   onclickIncrement={this.increment}
                 />
