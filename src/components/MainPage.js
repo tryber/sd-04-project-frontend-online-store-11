@@ -173,27 +173,19 @@ class MainPage extends Component {
             />
             <Route
               path="/checkout"
-              render={(props) => (
-                <Checkout {...props} cartProducts={cartProducts} />
-              )}
+              render={(props) => (<Checkout {...props} cartProducts={cartProducts} />)}
             />
             <Route
-              exact
-              path="/:id"
-              render={(props) => (
+              exact path="/:id" render={(props) => (
                 <ProductDetail
-                  id={props.match.params.id}
-                  product={props.location.test.product}
-                  products={products}
+                  id={props.match.params.id} product={props.location.test.product} products={products}
                   onClickAdd={this.addProductToCart}
                   onclickIncrement={this.increment}
                 />
               )}
             />
             <Route
-              exact
-              path="/"
-              render={(props) => this.renderMainContent(props)}
+              exact path="/" render={(props) => this.renderMainContent(props)}
             />
           </Switch>
         </div>
