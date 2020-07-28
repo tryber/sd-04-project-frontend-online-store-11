@@ -18,7 +18,7 @@ class Header extends React.Component {
           to="/ShoppingCart"
         >
           <img src={shop} alt="shoppingCart" />
-          <p data-testid="shopping-cart-size">{count}</p>
+          <p data-testid="shopping-cart-size">{ count }</p>
         </Link>
       </div>
     );

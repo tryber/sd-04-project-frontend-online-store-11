@@ -23,9 +23,7 @@ class ProductList extends React.Component {
             <p>{product.id}</p>
             <p>{product.title}</p>
             {product.shipping.free_shipping && (
-              <p data-testid="free-shipping">
-                {product.shipping.free_shipping}
-              </p>
+              <p data-testid="free-shipping">{product.shipping.free_shipping}</p>
             )}
             <img src={product.thumbnail} alt={product.title} />
             <button
@@ -36,10 +34,7 @@ class ProductList extends React.Component {
             </button>
             <Link
               data-testid="product-detail-link"
-              to={{
-                pathname: `./${product.id}`,
-                test: { product },
-              }}
+              to={{ pathname: `./${product.id}`, test: { product } }}
             >
               Detalhe
             </Link>
