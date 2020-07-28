@@ -95,7 +95,7 @@ class MainPage extends Component {
     let flagExist = false;
     this.state.cartProducts.map((cartProduct, index) => {
       const stockOk = cartProduct.selectedProduct.sold_quantity === cartProduct.quantity;
-      console.log("stockOk", stockOk);
+      // console.log("stockOk", stockOk);
       if (cartProduct.id === product.id && stockOk) {
         flagExist = true;
       }
@@ -166,11 +166,11 @@ class MainPage extends Component {
   }
 
   render() {
-    const { products, cartProducts } = this.state;
+    const { products, cartProducts, count } = this.state;
     return (
       <Router>
         <div className="App">
-          <Header count={ this.state.count }/>
+          <Header count={count} />
           <Switch>
             <Route
               path="/ShoppingCart" render={(props) => this.renderCart(props)}
