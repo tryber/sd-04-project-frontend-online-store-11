@@ -6,6 +6,7 @@ import './Header.css';
 
 class Header extends React.Component {
   render() {
+    const { count } = this.props;
     return (
       <div className="nav">
         <Link to="/">
@@ -17,6 +18,7 @@ class Header extends React.Component {
           to="/ShoppingCart"
         >
           <img src={shop} alt="shoppingCart" />
+          <p data-testid="shopping-cart-size">{count}</p>
         </Link>
       </div>
     );

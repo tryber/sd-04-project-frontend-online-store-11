@@ -22,10 +22,14 @@ class ProductList extends React.Component {
           <div data-testid="product" key={product.id}>
             <p>{product.id}</p>
             <p>{product.title}</p>
+            {product.shipping.free_shipping && (
+              <p data-testid="free-shipping">
+                {product.shipping.free_shipping}
+              </p>
+            )}
             <img src={product.thumbnail} alt={product.title} />
             <button
-              type="button"
-              data-testid="product-add-to-cart"
+              type="button" data-testid="product-add-to-cart"
               onClick={() => this.clickToAdd(product)}
             >
               Add this item to Cart

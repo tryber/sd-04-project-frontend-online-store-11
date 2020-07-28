@@ -14,7 +14,7 @@ class CheckoutProductsList extends React.Component {
     let totalPrice = 0;
     const { cartProducts } = this.props;
     if (cartProducts.length > 0) {
-      console.log('inside totalprice cartProducts', cartProducts);
+      // console.log('inside totalprice cartProducts', cartProducts);
       cartProducts.map((product) => {
         totalPrice += product.selectedProduct.price * product.quantity;
         return totalPrice;
